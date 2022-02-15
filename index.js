@@ -6,32 +6,32 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const SERVER_PORT = 3000;
+const SERVER_PORT = 8080;
 
 
-// app.post("/", async (req, res) => {
-//   res.send("HI, Volodya!!!");
+app.get("/", async (req, res) => {
+  res.send("HI, Volodya!!!");
 
-//   for (let index = 0; index < 10000; index++) {
-//     await db('Ceil').insert({ Price: faker.commerce.price(), Quantity: faker.datatype.number(), Units: faker.finance.currencySymbol() })
-//   }
-//   console.log("/ done");
-// })
-
-
-app.post("/batch", async (req, res) => {
-  const rows = [];
-  const chunkSize = 1000000;
-
-  for (let index = 0; index < chunkSize; index++) {
-    rows.push({ Price: faker.commerce.price(), Quantity: faker.datatype.number(), Units: faker.finance.currencySymbol() }
-    )
+  for (let index = 0; index < 10; index++) {
+    await db('Products').insert({ ProductName: "Banana"})
   }
-  db.batchInsert('Ceil', rows, chunkSize)
-    .returning('id')
-    .then(function (ids) { console.log("Yes"); })
-    .catch(function (error) { console.log("No") });
-});
+  console.log("/ done");
+})
+
+
+// app.post("/batch", async (req, res) => {
+//   const rows = [];
+//   const chunkSize = 1000;
+
+//   for (let index = 0; index < chunkSize; index++) {
+//     rows.push({ Price: faker.commerce.price(), Quantity: faker.datatype.number(), Units: faker.finance.currencySymbol() }
+//     )
+//   }
+//   db.batchInsert('Ceil', rows, chunkSize)
+//     .returning('id')
+//     .then(function (ids) { console.log("Yes"); })
+//     .catch(function (error) { console.log("No") });
+// });
 
 app.listen(SERVER_PORT, () => {
   console.log(`Example app listening at http://localhost:${SERVER_PORT}`)
