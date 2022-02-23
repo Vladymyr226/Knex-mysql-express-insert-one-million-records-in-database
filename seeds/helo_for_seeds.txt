@@ -1,0 +1,2 @@
+npx knex seed:run seed_batch_insert.js - запустить все миграции в папке
+npx knex seed:run --specific=seed_batch_insert.js - запустить опр. миграцию

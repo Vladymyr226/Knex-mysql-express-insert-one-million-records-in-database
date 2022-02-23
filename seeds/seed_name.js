@@ -1,19 +1,19 @@
 /**
  * @param { import("knex").Knex } knex
- * @returns { Promise<void> } 
+ * @returns { Promise<void> }
  */
 
-//Одиночная
+//Одиночная вставка, без батча
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex('bebra').del()
+  return knex("phone")
+    .del()
     .then(async function () {
-      for (let index = 0; index < 100; index++) {
-        console.log("first")
+      for (let index = 0; index < 80; index++) {
         // Inserts seed entries
-        await knex('bebra').insert([
-          { price: 110, name: 'rowValue1' }
-        ]);
+        await knex("phone").insert([
+          { price: 123, name: "Apple" },
+        ])
       }
-    });
-};
+    })
+}

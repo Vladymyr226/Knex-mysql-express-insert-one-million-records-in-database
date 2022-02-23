@@ -1,0 +1,1 @@
+npx knex migrate:up 20220214203142_migration_name.js - накатить миграцию

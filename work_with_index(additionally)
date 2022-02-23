@@ -1,0 +1,24 @@
+use testDB;
+
+select *
+        from phone
+        where phone.name = 'Василий'
+
+CREATE INDEX name_index ON phone (name)
+
+
+
+testDB> select *
+                from phone
+                where phone.name = 'Василий'
+[2022-02-23 15:35:00] 1 row retrieved starting from 1 in 176 ms (execution: 169 ms, fetching: 7 ms)
+
+
+
+
+//With index
+testDB> select *
+                 from phone
+                 where phone.name = 'Василий'
+[2022-02-23 15:38:33] 1 row retrieved starting from 1 in 30 ms (execution: 3 ms, fetching: 27 ms)
+	
